@@ -13,7 +13,7 @@ networks:
 machines:
   app:
     networks: { lab: 10 }
-    services: [{ port: 80, name: web, http: true, publish: 8080 }]
+    services: [{ port: 80, name: web, http: true, publish: 80 }]
     resources: { cpus: 1, memory_mb: 512 }
     docker:
       build: build/app

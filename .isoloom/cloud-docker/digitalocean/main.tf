@@ -66,7 +66,7 @@ resource "digitalocean_firewall" "env" {
     source_addresses = [var.allowed_cidr]
   }
   dynamic "inbound_rule" {
-    for_each = [8080]
+    for_each = [80]
     content {
       protocol         = "tcp"
       port_range       = tostring(inbound_rule.value)

@@ -83,7 +83,7 @@ resource "oci_core_security_list" "env" {
     protocol    = "all"
   }
   dynamic "ingress_security_rules" {
-    for_each = concat([22], [8080])
+    for_each = concat([22], [80])
     content {
       source   = var.allowed_cidr
       protocol = "6"

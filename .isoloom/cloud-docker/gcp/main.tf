@@ -94,7 +94,7 @@ resource "google_compute_firewall" "env" {
   source_ranges = [var.allowed_cidr]
   allow {
     protocol = "tcp"
-    ports    = concat(["22"], ["8080"])
+    ports    = concat(["22"], ["80"])
   }
 }
 

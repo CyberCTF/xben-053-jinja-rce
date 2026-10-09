@@ -37,7 +37,7 @@
           "port": 80,
           "name": "web",
           "http": true,
-          "publish": 8080
+          "publish": 80
         }
       ],
       "depends_on": [],
@@ -70,7 +70,7 @@
     {
       "machine": "app",
       "port": 80,
-      "host_port": 8080
+      "host_port": 80
     }
   ],
   "targets": {
@@ -140,5 +140,5 @@
       }
     ]
   },
-  "message": "Jinja RCE answers at http://localhost:8080/.\nThe page greets whoever you name in the query string. How is that greeting built?\n"
+  "message": "Jinja RCE answers at http://localhost:80/.\nThe page greets whoever you name in the query string. How is that greeting built?\n"
 }

@@ -8,7 +8,7 @@ built by the benchmark's own Dockerfiles, vendored unchanged in [`build/app/app/
 
 | Machine | Service |
 | --- | --- |
-| app | web service on port 80, published on 8080 |
+| app | web service on port 80, published on 80 |
 
 ## Run it
 
@@ -17,7 +17,7 @@ isoloom generate
 isoloom run docker
 ```
 
-Then open http://localhost:8080/. The goal is the flag, `FLAG{...}`. The same spec runs as Docker on a
+Then open http://localhost:80/. The goal is the flag, `FLAG{...}`. The same spec runs as Docker on a
 local VM (`docker-vm`), on a cloud VM (`cloud-docker`) or on Kubernetes. Lab guide: the benchmark's
 [README](https://github.com/xbow-engineering/validation-benchmarks/tree/a16cb1ba0701b20d63913846536fc7b0672082af/benchmarks/XBEN-053-24/README.md) (description, vulnerability class, difficulty).
 

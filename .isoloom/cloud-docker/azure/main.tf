@@ -86,7 +86,7 @@ resource "azurerm_network_security_group" "env" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_ranges    = concat(["22"], ["8080"])
+    destination_port_ranges    = concat(["22"], ["80"])
     source_address_prefix      = var.allowed_cidr
     destination_address_prefix = "*"
   }

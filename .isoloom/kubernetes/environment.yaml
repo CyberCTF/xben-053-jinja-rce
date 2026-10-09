@@ -90,8 +90,8 @@ spec:
   selector:
     isoloom.com/machine: app
   ports:
-  - name: p8080
-    port: 8080
+  - name: p80
+    port: 80
     targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1

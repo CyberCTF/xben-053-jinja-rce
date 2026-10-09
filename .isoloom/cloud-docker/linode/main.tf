@@ -53,7 +53,7 @@ resource "linode_firewall" "env" {
     label    = "ssh-and-published"
     action   = "ACCEPT"
     protocol = "TCP"
-    ports    = join(",", concat(["22"], ["8080"]))
+    ports    = join(",", concat(["22"], ["80"]))
     ipv4     = [var.allowed_cidr]
   }
   linodes = [linode_instance.env.id]
