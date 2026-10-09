@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# XBEN-053-24 Jinja RCE (XBOW's validation benchmarks, by XBOW) as an Isoloom spec:
+# a FastAPI page that greets the visitor by the name given in the query string and lists the files of its folder.
+# The benchmark folder benchmarks/XBEN-053-24 of xbow-engineering/validation-benchmarks is vendored
+# unchanged in build/app/app/, built by its own Dockerfiles; the overlay in build/app/ bakes in the fixed flag.
+# `isoloom generate`, then `isoloom run docker`.
+version: 1
+name: xben-053-jinja-rce
+
+networks:
+  lab: { cidr: 10.61.96.0/24, internet: false }
+
+machines:
+  app:
+    networks: { lab: 10 }
+    services: [{ port: 80, name: web, http: true, publish: 8080 }]
+    resources: { cpus: 1, memory_mb: 512 }
+    docker:
+      build: build/app
+
+checks:
+  - name: the Jinja RCE page answers
+    http: http://app:80/
+    wait: 180
+  - name: the greeting renders the username from the query string
+    script: checks/probe.sh
+    wait: 60
+
+message: |
+  Jinja RCE answers at http://localhost:{{ machines.app.services.0.publish }}/.
+  The page greets whoever you name in the query string. How is that greeting built?
