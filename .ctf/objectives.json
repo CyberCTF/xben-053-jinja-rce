@@ -1,0 +1,56 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Exploit the server-side template injection weakness of a FastAPI page that greets the visitor by the name given in the query string and lists the files of its folder and read the flag in /app/flag.txt.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-xben-053-jinja-rce}",
+      "hints": [
+        "Find the input that ends up inside the template source rather than being passed to it as data."
+      ],
+      "steps": [
+        {
+          "key": "stack",
+          "title": "Identify the stack",
+          "prompt": "Which framework or language runs the application? (name only)",
+          "check": {
+            "answer": [
+              "fastapi",
+              "python",
+              "uvicorn",
+              "starlette"
+            ]
+          }
+        },
+        {
+          "key": "class",
+          "title": "Name the weakness",
+          "prompt": "Which vulnerability class lets your input be evaluated by the template engine?",
+          "check": {
+            "answer": [
+              "ssti",
+              "server-side template injection",
+              "server side template injection",
+              "template injection"
+            ]
+          }
+        },
+        {
+          "key": "engine",
+          "title": "Name the template engine",
+          "prompt": "Which template engine renders the greeting?",
+          "check": {
+            "answer": [
+              "jinja",
+              "jinja2"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
